@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<!-- saved from url=(0124)file:///C:/Users/Stu-1-12/Desktop/html%20css%20and%20java%20script%20%E2%80%94%20%D0%BA%D0%BE%D0%BF%D0%B8%D1%8F/istella.html -->
+<html lang="ru"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Адаптивный дизайн</title>
+    <link href="./Адаптивный дизайн_files/css2" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+            position: relative; /* Для позиционирования иконок */
+        }
+
+        .header h1 {
+            margin: 0; /* Убираем отступы у заголовка */
+        }
+
+        .header .device-icons {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 20px; /* Позиционируем иконки справа */
+            display: flex;
+        }
+
+        .header .device-icons img {
+            width: 30px;
+            height: 30px;
+            margin-left: 10px; /* Отступ между иконками */
+            cursor: pointer;
+        }
+
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+            flex: 1;
+        }
+
+        .card {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            margin: 10px;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #f0f0f0;
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            filter: brightness(0.8); /* Сделать изображение немного темнее */
+        }
+
+        .card .text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            color: rgb(255, 255, 255);
+            font-size: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            text-align: center;
+            font-weight: bold; /* Жирный шрифт для текста */
+        }
+
+        /* Медиа запросы для адаптивного дизайна */
+        @media (max-width: 1024px) {
+            .card {
+                width: 45%;
+                height: 180px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .card {
+                width: 100%;
+                height: 150px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                width: 100%;
+                height: 120px;
+                font-size: 16px; /* Уменьшаем размер шрифта на мобильных устройствах */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>We'll help manage your business</h1>
+        <div class="device-icons">
+            <img src="./Адаптивный дизайн_files/smartphone.png" alt="Телефон" onclick="setDevice(&#39;phone&#39;)">
+            <img src="./Адаптивный дизайн_files/computer.png" alt="Компьютер" onclick="setDevice(&#39;laptop&#39;)">
+            <img src="./Адаптивный дизайн_files/319.png" alt="Планшет" onclick="setDevice(&#39;tablet&#39;)">
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <img src="./Адаптивный дизайн_files/3165e641b1d2972ff42c1162ba599743.jpg" alt="Placeholder Image"> <!-- Используем временные изображения -->
+            <div class="text">Consultations</div>
+        </div>
+        <div class="card">
+            <img src="./Адаптивный дизайн_files/bb20d3059ceda8c60d2bbaaa3e310656.jpg" alt="Placeholder Image">
+            <div class="text">Investment</div>
+        </div>
+        <div class="card">
+            <img src="./Адаптивный дизайн_files/2e0fbaa47e3bfb52be3d268798d61b78.jpg" alt="Placeholder Image">
+            <div class="text">Startups</div>
+        </div>
+        <div class="card">
+            <img src="./Адаптивный дизайн_files/b041abab5f12ce21f693f0bf2e1f895b.jpg" alt="Placeholder Image">
+            <div class="text">Marketing</div>
+        </div>
+        <div class="card">
+            <img src="./Адаптивный дизайн_files/21235f64b7447e24092a2f1c43bc273c.jpg" alt="Placeholder Image">
+            <div class="text">Anti-Crisis</div>
+        </div>
+    </div>
+
+    <div class="footer">Ставьте 10 баллов</div>
+
+    <script>
+        function setDevice(device) {
+            const container = document.querySelector('.container');
+            
+            if (device === 'phone') {
+                container.style.flexDirection = 'column';
+                container.style.alignItems = 'center';
+                document.querySelectorAll('.card').forEach(card => {
+                    card.style.width = '100%';
+                    card.style.height = '120px';
+                });
+            } else if (device === 'tablet') {
+                container.style.flexDirection = 'column';
+                container.style.alignItems = 'center';
+                document.querySelectorAll('.card').forEach(card => {
+                    card.style.width = '100%';
+                    card.style.height = '150px';
+                });
+            } else if (device === 'laptop') {
+                container.style.flexDirection = 'row';
+                container.style.alignItems = 'flex-start';
+                document.querySelectorAll('.card').forEach(card => {
+                    card.style.width = '300px';
+                    card.style.height = '200px';
+                });
+            }
+        }
+    </script>
+
+
+</body></html>
